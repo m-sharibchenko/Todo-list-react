@@ -1,0 +1,17 @@
+todos: [
+	{
+		id: generateUID(),
+		description: description,
+		priority: null,
+		date: null,
+		time: null,
+	}
+]
+
+projects: [
+	{
+		name: string
+		todos: [] - array of id
+	}
+]
+
