@@ -5,6 +5,7 @@ todos: [
 		priority: null,
 		date: null,
 		time: null,
+		project:
 	}
 ]
 

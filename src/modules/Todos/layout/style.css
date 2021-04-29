@@ -1,0 +1,18 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+.Sider {
+    min-width: 250px;
+    padding: 84px 0 0 0;
+    background-color: #FFFFFF;
+}
+
+.Content {
+    margin: 0 16px;
+    padding: 84px 0 0 0;
+}

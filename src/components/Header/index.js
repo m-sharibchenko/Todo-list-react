@@ -1,1 +1,0 @@
-export { HeaderCmp } from './Component'

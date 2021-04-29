@@ -1,0 +1,29 @@
+.todo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.todo-item__description {
+    display: flex;
+}
+
+.todo-item__main-info,
+.todo-item__info {
+    min-width: 750px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.first-priority {
+    background-color: #a007ca;
+    color: black;
+}
+
+.second-priority {
+    background-color: #0965d6;
+}
+
+.third-priority {
+    background-color: #FFFFFF;;
+}

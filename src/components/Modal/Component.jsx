@@ -1,17 +1,11 @@
-// todo: add common modal component (with common onOk, onCancel, title etc. from props)
-//  visible state is state in common component
-//  add {props.children} for adding custom content
-//  and use it when it is needed
-
-
-import { Button, Input, Modal } from 'antd'
 import React, { useState } from 'react'
+import { Button, Input, Modal } from 'antd'
 import PropTypes from 'prop-types'
 
 export function ModalWindow (props) {
-  const { btnText, title, onAddItem } = props
+  const { btnText, title, onAddItem, descriptionValue } = props
 
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState(descriptionValue ? descriptionValue: '')
   const [visible, setVisible] = useState(false)
 
   const showModal = () => {
@@ -24,6 +18,9 @@ export function ModalWindow (props) {
 
   const onHandleChange = (evt) => {
     setInputValue(evt.target.value)
+
+    const {onChange} = props
+    onChange(evt)
   }
 
   const onAdd = () => {
@@ -35,25 +32,29 @@ export function ModalWindow (props) {
 
   return (
     <>
-      <Button onClick={showModal}>{btnText}</Button>
+      <Button type="primary" onClick={showModal}>{btnText}</Button>
 
       <Modal
         visible={visible}
         title={title}
         onOK={onAdd}
         onCancel={handleCancel}
-        footer={[<Button key={title} onClick={onAdd}>Добавить</Button>]}
+        footer={[<Button key={title} onClick={onAdd}>Принять</Button>]}
       >
         <Input value={inputValue} onChange={onHandleChange}/>
-        {props.children}
+        <>
+          {props.children}
+        </>
       </Modal>
     </>
   )
 }
 
 ModalWindow.propTypes = {
+  descriptionValue: PropTypes.string,
   children: PropTypes.element,
   btnText: PropTypes.string,
   title: PropTypes.string,
-  onAddItem: PropTypes.func
+  onAddItem: PropTypes.func,
+  onChange: PropTypes.func,
 }
