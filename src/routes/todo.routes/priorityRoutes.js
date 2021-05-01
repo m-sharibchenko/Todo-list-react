@@ -1,6 +1,6 @@
 import React from 'react'
-import { FIRST_PRIORITY, SECOND_PRIORITY, THIRD_PRIORITY } from '../modules/Todos/constants/todoPriority'
-import { TodoList } from '../modules/Todos/components/TodoList'
+import { FIRST_PRIORITY, SECOND_PRIORITY, THIRD_PRIORITY } from '../../modules/Todos/constants/todoPriority'
+import { TodoList } from '../../modules/Todos/components/TodoList'
 
 const firstPriority = {
   path: '/priority1',

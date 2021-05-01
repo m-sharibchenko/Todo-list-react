@@ -1,16 +1,17 @@
 import React from 'react'
 import { Menu } from 'antd'
-import { homePg, prefs } from '../../../../routes/rootRoutes'
+import { user, app } from '../../../../routes/rootRoutes'
 import { Link } from 'react-router-dom'
 import { Search } from '../../../../components/Search'
 import { AddTask } from '../AddTask'
+import { todayRoute } from '../../../../routes/todo.routes/projectRoutes'
 
 export function HeaderMenu () {
   return (
     <>
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[homePg.path]}>
-        <Menu.Item key={homePg.path}>
-          <Link to={homePg.path}>Home</Link>
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[app.path]}>
+        <Menu.Item key={app.path}>
+          <Link to={`${app.path}${todayRoute.path}`}>Home</Link>
         </Menu.Item>
 
         <Menu.Item key='search-input' className="header__search-wrapper">
@@ -21,8 +22,8 @@ export function HeaderMenu () {
       <Menu theme="dark" mode="horizontal">
         <AddTask/>
 
-        <Menu.Item key={prefs.path}>
-          <Link to={prefs.path}>UserProfile</Link>
+        <Menu.Item key={user.path}>
+          <Link to={user.path}>UserProfile</Link>
         </Menu.Item>
       </Menu>
     </>

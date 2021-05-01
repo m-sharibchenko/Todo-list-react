@@ -9,7 +9,7 @@ import { ModalWindow } from '../../../../components/Modal/Component'
 import { DateTimePricker } from '../../../../components/DateTimePicker/Component'
 import { SelectProject } from '../SelectProject'
 import { SelectPriority } from '../SelectPriority'
-import { ACTIVE_TODO_STATUS, DONE_TODO_STATUS } from '../../constants/todoStatus'
+import { DONE_TODO_STATUS } from '../../constants/todoStatus'
 
 export function TodoItemCmp (props) {
   const { item } = props
@@ -61,7 +61,9 @@ export function TodoItemCmp (props) {
   }
 
   const onRestoreClick = () => {
-    item.status = ACTIVE_TODO_STATUS
+    // item.status = ACTIVE_TODO_STATUS
+
+  //  НЕЛЬЗЯ В ПРОПСЫ ЗНАЧЕНИЯ ДОБАВЛЯТЬ!!
   }
 
   return (

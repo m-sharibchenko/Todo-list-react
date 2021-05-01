@@ -26,8 +26,6 @@ export function TodoListCmp (props) {
   )
 }
 
-// .filter(item => item.status === ACTIVE_TODO_STATUS)
-
 TodoListCmp.propTypes = {
   filterProp: PropTypes.string,
   filterItem: PropTypes.string,

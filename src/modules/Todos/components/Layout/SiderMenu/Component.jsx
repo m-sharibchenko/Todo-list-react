@@ -4,9 +4,10 @@ import './style.css'
 import { DEFAULT_PROJECT } from '../../../constants/projects'
 import { Link, useRouteMatch } from 'react-router-dom'
 import { AddProject } from '../../AddProject'
-import { priorityRoutes } from '../../../../../routes/priorityRoutes'
+import { priorityRoutes } from '../../../../../routes/todo.routes/priorityRoutes'
 import { projectsPropTypes } from '../../../../../propTypes'
 import { ProjectItem } from '../../ProjectItem'
+import { deletedRoute, todayRoute, upcomingRoute } from '../../../../../routes/todo.routes/projectRoutes'
 
 const { SubMenu } = Menu
 
@@ -14,7 +15,7 @@ export function SiderMenuCmp (props) {
   const { url } = useRouteMatch()
 
   return (
-    <Menu defaultSelectedKeys="today" mode="inline" className="sider__main-menu">
+    <Menu mode="inline" className="sider__main-menu">
       <Menu.Item key="incoming">
         {props.projectsArray.map(item => {
           if (item.projectName === DEFAULT_PROJECT) {
@@ -24,11 +25,11 @@ export function SiderMenuCmp (props) {
       </Menu.Item>
 
       <Menu.Item key="today">
-        <Link to={`${url}/today`}>Сегодня</Link>
+        <Link to={`${url}${todayRoute.path}`}>Сегодня</Link>
       </Menu.Item>
 
       <Menu.Item key="upcoming">
-        <Link to={`${url}/upcoming`}>Предстоящие</Link>
+        <Link to={`${url}${upcomingRoute.path}`}>Предстоящие</Link>
       </Menu.Item>
 
       <SubMenu key="projects" title="Проекты" className="sider__projects">
@@ -52,7 +53,7 @@ export function SiderMenuCmp (props) {
       </SubMenu>
 
       <Menu.Item key="deleted">
-        <Link to={`${url}/deleted`}>Удаленные</Link>
+        <Link to={`${url}${deletedRoute.path}`}>Удаленные</Link>
       </Menu.Item>
     </Menu>
   )

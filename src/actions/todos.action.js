@@ -6,6 +6,7 @@ export const ADD_PROJECT = 'ADD_PROJECT'
 export const TODO_STATUS_CHANGE = 'TODO_STATUS_CHANGE'
 export const EDIT_TODO = 'EDIT_TODO'
 export const EDIT_PROJECT = 'EDIT_PROJECT'
+export const SET_USER_TODOS = 'SET_USER_TODOS'
 
 export function addTodoAction ({ description, date, time, project, priority }) {
   return {
@@ -64,5 +65,19 @@ export function editProject ({ id, projectName}) {
       id,
       projectName
     }
+  }
+}
+
+export function getUserTodos (userID) {
+  return async (dispatch) => {
+    const response = await fetch(`https://79d612a8-51e0-4fbe-898f-334e0704db14.mock.pstmn.io/test?userID=${userID}`)
+    const userTodos = await response.json()
+
+    dispatch({
+      type: SET_USER_TODOS,
+      payload: {
+        ...userTodos
+      }
+    })
   }
 }

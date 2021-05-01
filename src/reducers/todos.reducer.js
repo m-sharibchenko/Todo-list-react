@@ -1,18 +1,24 @@
-import { ADD_PROJECT, ADD_TODO, EDIT_TODO, EDIT_PROJECT, TODO_STATUS_CHANGE } from '../actions/todos.action'
+import {
+  ADD_PROJECT,
+  ADD_TODO,
+  EDIT_TODO,
+  EDIT_PROJECT,
+  TODO_STATUS_CHANGE,
+  SET_USER_TODOS
+} from '../actions/todos.action'
 import { DEFAULT_PROJECT } from '../modules/Todos/constants/projects'
-import { v1 as generateUID } from 'uuid'
 import { ACTIVE_TODO_STATUS, DONE_TODO_STATUS } from '../modules/Todos/constants/todoStatus'
 
 const initialState = {
   todos: [],
   projects: [
     {
-      id: generateUID(),
+      id: "6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b",
       projectName: DEFAULT_PROJECT,
       todos: []
     },
     {
-      id: generateUID(),
+      id: "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
       projectName: 'Попробовать',
       todos: []
     }
@@ -21,6 +27,9 @@ const initialState = {
 
 export function todosReducer (state = initialState, action) {
   switch (action.type) {
+    case SET_USER_TODOS:
+      const userData = action.payload
+      return userData
     case ADD_TODO:
       const newTodo = action.payload
       const newProjects = state.projects.map(item => {
