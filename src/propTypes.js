@@ -24,3 +24,8 @@ export const projectPropTypes = PropTypes.shape({
 
 export const projectsPropTypes = PropTypes.arrayOf(projectPropTypes)
 
+export const userDataPropTypes = PropTypes.shape({
+    isLogged: PropTypes.bool,
+    userName: PropTypes.string,
+    email: PropTypes.string
+})

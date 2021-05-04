@@ -29,11 +29,13 @@ export function LoginPgCmp (props) {
       const data = await response.json()
 
       if (data.find(({ email }) => email === value)) {
-        const userID = data.find(({ email }) => email === value).id
+        const user = data.find(({ email }) => email === value)
+
+        const userID = user.id
 
         setShowError(false)
 
-        isUserExist(true)
+        isUserExist(true, user)
         getUserTodos(userID)
 
       } else {

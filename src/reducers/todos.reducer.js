@@ -28,8 +28,7 @@ const initialState = {
 export function todosReducer (state = initialState, action) {
   switch (action.type) {
     case SET_USER_TODOS:
-      const userData = action.payload
-      return userData
+      return action.payload
     case ADD_TODO:
       const newTodo = action.payload
       const newProjects = state.projects.map(item => {

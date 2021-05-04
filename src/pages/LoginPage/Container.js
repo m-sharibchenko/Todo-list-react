@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    isUserExist: (data) => dispatch(userIsLogin(data)),
+    isUserExist: (bool, data) => dispatch(userIsLogin(bool, data)),
     getUserTodos: (userID) => dispatch(getUserTodos(userID)),
   }
 }

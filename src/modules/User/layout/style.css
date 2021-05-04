@@ -1,0 +1,21 @@
+.user__header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.user__sider {
+    min-width: 250px;
+    height: 100vh;
+    padding: 0;
+    background-color: #F0F2F5;
+}
+
+.user__content {
+    margin: 0 16px;
+    padding: 4px 15px 0;
+    background-color: #FFFFFF;
+}

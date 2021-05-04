@@ -9,36 +9,34 @@ export function ContentCmp (props) {
   const { url } = useRouteMatch()
 
   return (
-    <>
-      <Switch>
-        {props.projectsArray.map(item => {
-          return (
-            <Route key={item.id}
-                   path={`${url}/${item.id}`}
-                   exact
-                   render={() => (<TodoList filterProp="project" filterItem={item.id}/>)}
-            />)
-        })}
+    <Switch>
+      {props.projectsArray.map(item => {
+        return (
+          <Route key={item.id}
+                 path={`${url}/${item.id}`}
+                 exact
+                 render={() => (<TodoList filterProp="project" filterItem={item.id}/>)}
+          />)
+      })}
 
-        {priorityRoutes.map(({ path, isExact, component }) => {
-          return (
-            <Route key={path}
-                   path={`${url}${path}`}
-                   exact={isExact}
-                   component={component}
-            />)
-        })}
+      {priorityRoutes.map(({ path, isExact, component }) => {
+        return (
+          <Route key={path}
+                 path={`${url}${path}`}
+                 exact={isExact}
+                 component={component}
+          />)
+      })}
 
-        {projectRoutes.map(({ path, isExact, component }) => {
-          return (
-            <Route key={path}
-                   path={`${url}${path}`}
-                   exact={isExact}
-                   component={component}
-            />)
-        })}
-      </Switch>
-    </>
+      {projectRoutes.map(({ path, isExact, component }) => {
+        return (
+          <Route key={path}
+                 path={`${url}${path}`}
+                 exact={isExact}
+                 component={component}
+          />)
+      })}
+    </Switch>
   )
 }
 

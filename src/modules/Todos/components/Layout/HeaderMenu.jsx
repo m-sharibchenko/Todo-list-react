@@ -14,7 +14,7 @@ export function HeaderMenu () {
           <Link to={`${app.path}${todayRoute.path}`}>Home</Link>
         </Menu.Item>
 
-        <Menu.Item key='search-input' className="header__search-wrapper">
+        <Menu.Item key='search-input'>
           <Search/>
         </Menu.Item>
       </Menu>

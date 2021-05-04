@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom'
 import { HomePg } from '../pages/HomePage'
 import { LoginPg } from '../pages/LoginPage'
 import { RegistrationPg } from '../pages/RegistrationPage'
+import { UserProfile } from '../modules/User'
+import { pricing } from './user.routes/pricingRoutes'
 
 export const startPg = {
   path: '/',
@@ -38,7 +40,7 @@ export const app = {
 export const user = {
   path: '/user',
   isExact: false,
-  component: () => <div>userprof</div>,
+  component: UserProfile,
 }
 
-export const rootRoutes = [startPg, homePg, app, user, loginPg, registrationPg]
+export const rootRoutes = [startPg, homePg, app, user, loginPg, registrationPg, pricing]
