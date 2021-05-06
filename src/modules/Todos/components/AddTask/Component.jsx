@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { ModalWindow } from '../../../../components/Modal/Component'
-import { DateTimePricker } from '../../../../components/DateTimePicker/Component.jsx'
+import { ModalWindow } from '../../../../components/Modal'
+import { DateTimePricker } from '../../../../components/DateTimePicker'
 import { SelectProject } from '../SelectProject'
 import { DEFAULT_PROJECT } from '../../constants/projects'
 import { SelectPriority } from '../SelectPriority'
@@ -50,12 +50,17 @@ export function AddTaskCmp (props) {
   }
 
   return (
-    <ModalWindow onAddItem={onAdd} btnText="+ Add task" title="Добавление задачи" onChange={onHandleChange}>
+    <ModalWindow
+      onAddItem={onAdd}
+      btnType="primary"
+      btnText="+ Новая задача"
+      title="Добавление задачи"
+      onChange={onHandleChange}>
         <div>
           <DateTimePricker addTime={onAddTime} addDate={onAddDate}/>
           <SelectProject addProject={onAddProject}/>
           <SelectPriority addPriority={onAddPriority}/>
-          <div>Напоминание</div>
+          {/*<div>Напоминание</div>*/}
         </div>
     </ModalWindow>
   )

@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { Button, Input, Modal } from 'antd'
+import './style.css'
 import PropTypes from 'prop-types'
 
 export function ModalWindow (props) {
-  const { btnText, title, onAddItem, descriptionValue } = props
+  const { btnType, styleClass, btnText, title, onAddItem, descriptionValue } = props
 
-  const [inputValue, setInputValue] = useState(descriptionValue ? descriptionValue: '')
+  const [inputValue, setInputValue] = useState(descriptionValue ? descriptionValue : '')
   const [visible, setVisible] = useState(false)
 
   const showModal = () => {
+    console.log(descriptionValue)
+    console.log(typeof inputValue)
     setVisible(true)
   }
 
@@ -32,16 +35,31 @@ export function ModalWindow (props) {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>{btnText}</Button>
+      <Button
+        type={btnType}
+        onClick={showModal}
+        className={`modal__btn-show ${styleClass}`}
+      >
+        {btnText || (<img src="/icons/edit.png" alt="edit"/>)}
+      </Button>
 
       <Modal
         visible={visible}
         title={title}
         onOK={onAdd}
         onCancel={handleCancel}
-        footer={[<Button key={title} onClick={onAdd}>Принять</Button>]}
+        footer={[
+          <Button type="primary" key={title} onClick={onAdd} disabled={inputValue === undefined}>
+            Принять
+          </Button>
+        ]}
       >
-        <Input value={inputValue} onChange={onHandleChange}/>
+        <Input
+          value={inputValue}
+          placeholder="Введите название"
+          onChange={onHandleChange}
+          className="modal__input-item-name"
+        />
         <>
           {props.children}
         </>
@@ -54,6 +72,8 @@ ModalWindow.propTypes = {
   descriptionValue: PropTypes.string,
   children: PropTypes.element,
   btnText: PropTypes.string,
+  btnType: PropTypes.string,
+  styleClass: PropTypes.string,
   title: PropTypes.string,
   onAddItem: PropTypes.func,
   onChange: PropTypes.func,

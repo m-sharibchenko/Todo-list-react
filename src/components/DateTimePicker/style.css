@@ -1,0 +1,12 @@
+.date-time-picker {
+    margin-bottom: 0.5rem;
+}
+
+.time-picker {
+    width: 120px;
+}
+
+.date-picker {
+    height: 34px;
+    margin-right: 0.2rem;
+}

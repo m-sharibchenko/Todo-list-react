@@ -1,24 +1,30 @@
 import React, { useState } from 'react'
 import { Checkbox, Switch } from 'antd'
+import './style.css'
 import { ACCOUNT_NOTIFICATION } from '../../constants/accountInfoTitles'
 
 export function Notification () {
-  const [disabled, setDisabled] = useState(true)
+  const [switchChecked, setSwitchChecked] = useState(true)
 
   const onChange = (checked) => {
-    checked ? setDisabled(false) : setDisabled(true)
+    checked ? setSwitchChecked(true) : setSwitchChecked(false)
   }
 
   return (
     <>
-      <p>Уведомления</p>
-      <div>
-        Включить уведомления
-        <Switch defaultChecked onChange={onChange}/>
+      <p className="notification-title">Уведомления</p>
+      <div className="notification-switch">
+        <span>Включить уведомления</span>
+        <Switch defaultChecked={switchChecked} onChange={onChange}/>
       </div>
-      {ACCOUNT_NOTIFICATION.map(({title}) => {
-        return (<Checkbox key={title} disabled={disabled}>{title}</Checkbox>)
-      })}
+
+      <div className="notification-checkboxes">
+        {ACCOUNT_NOTIFICATION.map(({title}) => {
+          return (<Checkbox className="notification-item" key={title} disabled={!switchChecked}>
+            {title}
+          </Checkbox>)
+        })}
+      </div>
     </>
   )
 }

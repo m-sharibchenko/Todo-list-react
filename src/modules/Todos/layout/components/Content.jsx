@@ -1,13 +1,13 @@
 import React from 'react'
-import { Layout } from 'antd'
+// import { Layout } from 'antd'
 import { Content } from '../../components/Layout/Content'
 
-const ContentAntd = Layout.Content
+// const ContentAntd = Layout.Content
 
 export function ContentLayout () {
   return (
-    <ContentAntd className="Content">
+    <div className="Content">
       <Content/>
-    </ContentAntd>
+    </div>
   )
 }

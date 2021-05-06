@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { projectPropTypes } from '../../../../propTypes'
-import { ModalWindow } from '../../../../components/Modal/Component'
+import { ModalWindow } from '../../../../components/Modal'
+import './style.css'
 
 export function ProjectItemCmp (props) {
   const { url, item } = props
@@ -24,19 +25,27 @@ export function ProjectItemCmp (props) {
   }
 
   return (
-    <>
-      <Link to={`${url}/${project.id}`}>{project.projectName}</Link>
+    <div className="project">
+      <div className="project__link">
+        <Link to={`${url}/${project.id}`}>
+          {project.projectName.length < 20
+            ? project.projectName
+            : `${project.projectName.substring(0, 16)}...` }
+        </Link>
+      </div>
+
 
       <ModalWindow
         onAddItem={onEditProject}
-        btnText="Ed"
+        btnType="text"
+        styleClass="btn-edit"
         title="Изменение"
         onChange={onHandleChange}
         descriptionValue={item.projectName}
       >
-        <div>Изменить формат отображения</div>
+        {/*<div>Изменить формат отображения</div>*/}
       </ModalWindow>
-    </>
+    </div>
   )
 }
 

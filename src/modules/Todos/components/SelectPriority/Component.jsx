@@ -8,7 +8,7 @@ const { Option } = Select
 export function SelectPriorityCmp (props) {
   const { priorityValue } = props
 
-  const [value, setValue] = useState(priorityValue ? priorityValue : '')
+  const [value, setValue] = useState(priorityValue ? priorityValue : undefined)
 
   const setPriority = (newValue) => {
     const { addPriority } = props
@@ -21,7 +21,7 @@ export function SelectPriorityCmp (props) {
     <Select
       allowClear
       style={{ width: '100%' }}
-      placeholder="Select priority"
+      placeholder="Выберите приоритет"
       defaultValue={value}
       onChange={setPriority}
     >

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import 'antd/dist/antd.css'
-import { TimePicker, DatePicker } from 'antd'
+import './style.css'
+import { DatePicker, Input } from 'antd'
 import moment from 'moment'
 
 export function DateTimePricker (props) {
@@ -10,9 +10,8 @@ export function DateTimePricker (props) {
   const date = defaultDate
   const time = defaultTime
   const dateFormat = 'YYYY-MM-DD'
-  const timeFormat='HH:mm'
 
-  const [dateWasSet, changeDateWasSet] = useState(!defaultTime)
+  const [dateWasSet, changeDateWasSet] = useState(!defaultDate)
 
   const disabledDate = (current) => {
     const tomorrow = new Date();
@@ -25,25 +24,28 @@ export function DateTimePricker (props) {
     addDate(dateString)
   }
 
-  const setTime = (time, timeString) => {
+  const setTime = (evt) => {
     const { addTime } = props
-    addTime(timeString)
+    addTime(evt.target.value)
   }
 
   return (
-    <>
+    <div className="date-time-picker">
       <DatePicker
         defaultValue={date ? moment(date, dateFormat) : null}
         disabledDate={disabledDate}
-        onChange={setDate}/>
-      <TimePicker
-        disabled={dateWasSet}
-        defaultValue={time ? moment(time, timeFormat) : null}
-        format={timeFormat}
-        showNow={false}
-        onChange={setTime}
+        onChange={setDate}
+        placeholder="Дата"
+        className="date-picker"
       />
-    </>
+      <Input
+        type="time"
+        className="time-picker"
+        disabled={dateWasSet}
+        value={time}
+        onInput={setTime}
+      />
+    </div>
   )
 }
 

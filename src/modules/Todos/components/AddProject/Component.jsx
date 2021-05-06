@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ModalWindow } from '../../../../components/Modal/Component'
+import { ModalWindow } from '../../../../components/Modal'
 
 export function AddProjectCmp (props) {
   const { onAddProject } = props
@@ -10,11 +10,12 @@ export function AddProjectCmp (props) {
   return (
     <ModalWindow
       onAddItem={onAddProject}
-      btnText="+ Add project"
+      btnText="+ Новый проект"
+      btnType="primary"
       title="Добавление проекта"
       onChange={onHandleChange}
     >
-      <div>Выбрать формат отображения</div>
+      {/*<div>Выбрать формат отображения</div>*/}
     </ModalWindow>
   )
 }

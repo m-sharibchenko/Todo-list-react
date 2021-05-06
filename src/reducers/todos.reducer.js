@@ -6,7 +6,7 @@ import {
   TODO_STATUS_CHANGE,
   SET_USER_TODOS
 } from '../actions/todos.action'
-import { DEFAULT_PROJECT } from '../modules/Todos/constants/projects'
+import { DEFAULT_PROJECT, FIRST_PROJECT } from '../modules/Todos/constants/projects'
 import { ACTIVE_TODO_STATUS, DONE_TODO_STATUS } from '../modules/Todos/constants/todoStatus'
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
     },
     {
       id: "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
-      projectName: 'Попробовать',
+      projectName: FIRST_PROJECT,
       todos: []
     }
   ],

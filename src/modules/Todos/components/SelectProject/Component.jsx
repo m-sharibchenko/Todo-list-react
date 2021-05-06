@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { projectsPropTypes } from '../../../../propTypes'
 import { Select } from 'antd'
+import './style.css'
 import { DEFAULT_PROJECT } from '../../constants/projects'
 
 const { Option } = Select
@@ -21,9 +22,10 @@ export function SelectProjectCmp (props) {
   return (
     <Select
       style={{ width: '100%' }}
-      placeholder="Please select"
+      placeholder="Выбрать проект"
       defaultValue={value}
       onChange={setProject}
+      className="select-project"
     >
       {props.projectsArray.map(item => {
         return <Option key={item.id} value={item.id}>{item.projectName}</Option>

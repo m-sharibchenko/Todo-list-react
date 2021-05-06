@@ -1,0 +1,1 @@
+export { SignupPg } from './Component'

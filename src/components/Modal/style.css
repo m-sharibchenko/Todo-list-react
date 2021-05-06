@@ -1,0 +1,16 @@
+.modal__btn-show {
+    min-width: 1rem;
+    padding: 0 0.4rem;
+}
+
+.btn-edit {
+    height: 40px;
+}
+
+.btn-edit:hover {
+    background-color: #bdbfc1;
+}
+
+.modal__input-item-name {
+    margin-bottom: 0.5rem;
+}

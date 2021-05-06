@@ -25,7 +25,7 @@ export function Search () {
     <SearchAntd
       className="header__input-search"
       value={value}
-      placeholder="input search text"
+      placeholder="Поиск проекта"
       onChange={onInputChange}
       onSearch={onSearch}
       enterButton

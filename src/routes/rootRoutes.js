@@ -3,7 +3,7 @@ import { Todos } from '../modules/Todos'
 import { Redirect } from 'react-router-dom'
 import { HomePg } from '../pages/HomePage'
 import { LoginPg } from '../pages/LoginPage'
-import { RegistrationPg } from '../pages/RegistrationPage'
+import { SignupPg } from '../pages/SignupPg'
 import { UserProfile } from '../modules/User'
 import { pricing } from './user.routes/pricingRoutes'
 
@@ -25,10 +25,10 @@ export const loginPg = {
   component: LoginPg,
 }
 
-export const registrationPg = {
+export const signupPg = {
   path: '/registration',
   isExact: false,
-  component: RegistrationPg,
+  component: SignupPg,
 }
 
 export const app = {
@@ -43,4 +43,4 @@ export const user = {
   component: UserProfile,
 }
 
-export const rootRoutes = [startPg, homePg, app, user, loginPg, registrationPg, pricing]
+export const rootRoutes = [startPg, homePg, app, user, loginPg, signupPg, pricing]

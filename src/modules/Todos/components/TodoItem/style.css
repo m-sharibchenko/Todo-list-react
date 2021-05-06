@@ -4,26 +4,56 @@
     align-items: flex-start;
 }
 
+.todo-item__checkbox {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
 .todo-item__description {
     display: flex;
+    font-size: 1.3rem;
 }
 
 .todo-item__main-info,
 .todo-item__info {
-    min-width: 750px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.todo-item__info {
+    color: #6c6c6d;
+    padding: 3px 0 0 22px;
+}
+
+.todo-item__date-priority {
+    display: flex;
+}
+
+.todo-item__date {
+    margin-right: 2rem;
+}
+
+.first-priority,
+.second-priority,
+.third-priority {
+    min-width: 98px;
+    text-align: center;
+    border-radius: 3px;
+    margin-right: 2rem;
 }
 
 .first-priority {
-    background-color: #a007ca;
+    background-color: rgba(193, 26, 243, 0.2);
     color: black;
 }
 
 .second-priority {
-    background-color: #0965d6;
+    background-color: rgba(12, 138, 217, 0.2);
 }
 
 .third-priority {
-    background-color: #FFFFFF;;
+    background-color: rgba(255, 255, 255, 0.6);
 }

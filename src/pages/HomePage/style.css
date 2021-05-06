@@ -1,0 +1,45 @@
+.home-page {
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background: url("../../img/homePg.png") center / cover no-repeat #46474a;
+    background-blend-mode: multiply;
+}
+
+.home-page__title {
+    text-align: center;
+    vertical-align: middle;
+
+    margin-bottom: 1rem;
+
+    color: #FFFFFF;
+    font-size: 4.25rem;
+}
+
+.home-page__login-wrapper {
+    text-align: right;
+    padding: 0.3rem 0.9rem;
+    margin-bottom: 12rem;
+}
+
+.home-page__btn-login {
+    min-width: 6.25rem;
+    margin-right: 0.3rem;
+}
+
+.home-page__btn-login, .home-page__btn-signup {
+    min-height: 38px;
+    background-color: #FFFFFF;
+    color: #5288e8;
+}
+
+.home-page__btn-signup {
+    min-width: 11.25rem;
+}
+
+.home-page__btn-start {
+    min-width: 150px;
+    min-height: 38px;
+    background-color: #5288e8;
+    color: #FFFFFF;
+}

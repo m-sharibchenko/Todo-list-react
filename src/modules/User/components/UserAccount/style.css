@@ -1,4 +1,32 @@
-.user-account {
-    padding: 15px 0;
+.account-info:not(:first-child) {
+    padding-top: 15px;
+}
+
+.account-info {
+    padding-bottom: 15px;
     border-bottom: 1px solid #F0F2F5;
+}
+
+.account-info__title {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.account-info__tariff {
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-info__current-tariff {
+    max-width: 450px;
+    margin-right: 3rem;
+}
+
+.account-info__tariff-title {
+    font-size: 1.7rem;
+}
+
+.account-info__btn-delete-acc {
+    color: #40a9ff;
 }

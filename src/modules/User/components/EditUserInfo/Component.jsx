@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'antd'
+import './style.css'
 
 export function EditUserInfoCmp (props) {
   const { item, title } = props
@@ -42,31 +43,47 @@ export function EditUserInfoCmp (props) {
 
   return (
     <li>
-      <p>{title}</p>
-      <p>{value}</p>
-      <input
-        style={{ display: isSaveHidden ? 'none' : null }}
-        value={value}
-        onChange={onValueChange}
-      />
-      <Button
-        style={{ display: isEditHidden ? 'none' : null }}
-        onClick={onEditClick}
-      >
-        Изменить
-      </Button>
-      <Button
-        style={{ display: isSaveHidden ? 'none' : null }}
-        onClick={onSaveClick}
-      >
-        Сохранить
-      </Button>
-      <Button
-        style={{ display: isCancelHidden ? 'none' : null }}
-        onClick={onCancelClick}
-      >
-        Отменить
-      </Button>
+      <div className="user-info">
+        <p className="user-info-title">{title}</p>
+
+        <div className="edit-user-info">
+          <p style={{ display: isSaveHidden ? null : 'none'}}>
+            {value}
+          </p>
+
+          <Button
+            type="link"
+            style={{ display: isEditHidden ? 'none' : null }}
+            onClick={onEditClick}
+          >
+            Изменить
+          </Button>
+        </div>
+      </div>
+
+      <div className="user-info-editor">
+        <input
+          style={{ display: isSaveHidden ? 'none' : null }}
+          value={value}
+          onChange={onValueChange}
+        />
+
+        <Button
+          type="link"
+          style={{ display: isSaveHidden ? 'none' : null }}
+          onClick={onSaveClick}
+        >
+          Сохранить
+        </Button>
+
+        <Button
+          type="link"
+          style={{ display: isCancelHidden ? 'none' : null }}
+          onClick={onCancelClick}
+        >
+          Отменить
+        </Button>
+      </div>
     </li>
   )
 }

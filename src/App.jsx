@@ -1,5 +1,6 @@
 import React from 'react'
 import 'antd/dist/antd.css'
+import './index.css'
 import { Switch, Route } from 'react-router-dom'
 import { rootRoutes } from './routes/rootRoutes'
 

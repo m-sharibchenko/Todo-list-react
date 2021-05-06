@@ -1,0 +1,39 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.login-page__form {
+    min-width: 16rem;
+    min-height: 11rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.login-page__form-title {
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.login-page__btn-form-submit {
+   min-height: 38px;
+}
+
+.login-page__btn-form-submit:hover {
+    background-color: #40a9ff;
+    color: #FFFFFF;
+}
+
+.login-page__user-not-found {
+    margin-bottom: 1rem;
+    color: #b72c51;
+}
+
+.login-page__signup-text {
+    margin-right: 0.3rem;
+}

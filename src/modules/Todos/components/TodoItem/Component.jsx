@@ -5,8 +5,8 @@ import './style.css'
 import { projectsPropTypes, todoPropTypes } from '../../../../propTypes'
 import { formatDate } from './sevices/formatDate'
 import { FIRST_PRIORITY, SECOND_PRIORITY, THIRD_PRIORITY } from '../../constants/todoPriority'
-import { ModalWindow } from '../../../../components/Modal/Component'
-import { DateTimePricker } from '../../../../components/DateTimePicker/Component'
+import { ModalWindow } from '../../../../components/Modal'
+import { DateTimePricker } from '../../../../components/DateTimePicker'
 import { SelectProject } from '../SelectProject'
 import { SelectPriority } from '../SelectPriority'
 import { DONE_TODO_STATUS } from '../../constants/todoStatus'
@@ -61,8 +61,6 @@ export function TodoItemCmp (props) {
   }
 
   const onRestoreClick = () => {
-    // item.status = ACTIVE_TODO_STATUS
-
   //  НЕЛЬЗЯ В ПРОПСЫ ЗНАЧЕНИЯ ДОБАВЛЯТЬ!!
   }
 
@@ -70,14 +68,19 @@ export function TodoItemCmp (props) {
     <List.Item className="todo-item">
       <div className="todo-item__main-info">
         <div className="todo-item__description">
-          <Checkbox onChange={onStatusChange} checked={todo.status === DONE_TODO_STATUS}/>
+          <Checkbox
+            onChange={onStatusChange}
+            checked={todo.status === DONE_TODO_STATUS}
+            className="todo-item__checkbox"
+          />
           <p key={todo.description}>{todo.description}</p>
         </div>
 
         <ModalWindow
           onAddItem={onEditItem}
-          btnText="Edit"
-          title="Изменить"
+          btnType="text"
+          styleClass="btn-edit"
+          title="Редактировать"
           onChange={onHandleChange}
           descriptionValue={todo.description}
         >
@@ -85,7 +88,7 @@ export function TodoItemCmp (props) {
             <DateTimePricker addTime={onEditTime} addDate={onEditDate} defaultDate={todo.date} defaultTime={todo.time}/>
             <SelectProject addProject={onEditProject} projectValue={todo.project}/>
             <SelectPriority addPriority={onEditPriority} priorityValue={todo.priority}/>
-            <div>Напоминание</div>
+            {/*<div>Напоминание</div>*/}
           </div>
         </ModalWindow>
 
@@ -96,15 +99,23 @@ export function TodoItemCmp (props) {
       </div>
 
       <div className="todo-item__info">
-        <p>{`${todo.date ? formatDate(todo.date) : ''}${todo.time ? `, ${todo.time}` : ''}`}</p>
 
-        <p
-          className={todo.priority === FIRST_PRIORITY && 'first-priority'
-          || todo.priority === SECOND_PRIORITY && 'second-priority'
-          || todo.priority === THIRD_PRIORITY && 'third-priority'}
-        >
-          {todo.priority}
-        </p>
+        <div className="todo-item__date-priority">
+          {todo.date ?
+            <p className="todo-item__date">
+              {`${formatDate(todo.date)}, ${todo.time}`}
+            </p>
+            : ''
+          }
+
+          <p
+            className={todo.priority === FIRST_PRIORITY && 'first-priority'
+            || todo.priority === SECOND_PRIORITY && 'second-priority'
+            || todo.priority === THIRD_PRIORITY && 'third-priority'}
+          >
+            {todo.priority}
+          </p>
+        </div>
 
         <p>{props.projectsArray.find(item => item.id === todo.project).projectName}</p>
       </div>

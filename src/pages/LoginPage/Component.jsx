@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link, useHistory } from 'react-router-dom'
-import { app, registrationPg } from '../../routes/rootRoutes'
+import { Input } from 'antd'
+import './style.css'
+import { app, signupPg } from '../../routes/rootRoutes'
 
 export function LoginPgCmp (props) {
   const [value, setValue] = useState('')
@@ -49,18 +51,28 @@ export function LoginPgCmp (props) {
   }
 
   return (
-    <div>
-      <p>Login form</p>
-      <form name="form" onSubmit={onSubmitForm}>
-        <input type="text" name="email" value={value} onChange={onHandleChange}/>
-        <button type="submit">Войти</button>
+    <div className="login-page">
+      <form className="login-page__form" name="form" onSubmit={onSubmitForm}>
+        <p className="login-page__form-title">Вход</p>
+
+        <div className="login-page__form-email-wrap">
+          <label>Email</label>
+          <Input type="text" name="email" className="login-page__form-email" value={value} onChange={onHandleChange}/>
+        </div>
+
+        <button type="submit" className="login-page__btn-form-submit">Войти</button>
       </form>
 
-      {showError ? <p>Пользователь не найден. Проверьте прявильность введенных данных</p> : null}
+      {showError ?
+        <p className="login-page__user-not-found">
+          Пользователь не найден. Проверьте правильность введенных данных
+        </p>
+        : null
+      }
 
-      <div>
-        Нет аккаунта?
-        <Link to={registrationPg.path}>Зарегестрироваться</Link>
+      <div className="login-page__signup">
+        <span className="login-page__signup-text">Нет аккаунта?</span>
+        <Link to={signupPg.path}>Зарегестрироваться</Link>
       </div>
     </div>
   )
