@@ -1,6 +1,6 @@
 import { TodoItemCmp } from './Component'
 import { connect } from 'react-redux'
-import { editTodo, todoStatusChange } from '../../../../actions/todos.action'
+import { editTodo, todoStatusChange,deleteTodo } from '../../../../actions/todos.action'
 import { getProjects } from '../../../../selectors'
 
 const mapStateToProps = (state) => {
@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onTodoStatusChange: (todo) => dispatch(todoStatusChange(todo)),
     onEditTodo: (todo) => dispatch(editTodo(todo)),
+    onDeleteTodo: (todoId) => dispatch(deleteTodo(todoId)),
   }
 }
 

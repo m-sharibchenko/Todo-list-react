@@ -1,10 +1,11 @@
 .modal__btn-show {
-    min-width: 1rem;
     padding: 0 0.4rem;
 }
 
 .btn-edit {
-    height: 40px;
+    height: 31px;
+    width: 31px;
+    margin-right: 0.4rem;
 }
 
 .btn-edit:hover {

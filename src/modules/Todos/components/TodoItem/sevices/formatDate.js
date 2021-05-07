@@ -1,45 +1,46 @@
 export function formatDate (str) {
   const day = str.slice(8)
-  const month = str.slice(5,7)
-  let date
+  const month = str.slice(5, 7)
+  const year = str.slice(0, 4)
+  let textMonth
   switch (month) {
     case '01':
-      date = `${day} jan`
+      textMonth = 'jan'
       break;
     case '02':
-      date = `${day} feb`
+      textMonth = 'feb'
       break;
     case '03':
-      date = `${day} mar`
+      textMonth = 'mar'
       break;
     case '04':
-      date = `${day} apr`
+      textMonth = 'apr'
       break;
     case '05':
-      date = `${day} may`
+      textMonth = 'may'
       break;
     case '06':
-      date = `${day} june`
+      textMonth = 'june'
       break;
     case '07':
-      date = `${day} july`
+      textMonth = 'july'
       break;
     case '08':
-      date = `${day} aug`
+      textMonth = 'aug'
       break;
     case '09':
-      date = `${day} sept`
+      textMonth = 'sept'
       break;
     case '10':
-      date = `${day} oct`
+      textMonth = 'oct'
       break;
     case '11':
-      date = `${day} nov`
+      textMonth = 'nov'
       break;
     case '12':
-      date = `${day} dec`
+      textMonth = 'dec'
       break;
   }
 
-  return date
+  return `${day} ${textMonth} ${year}`
 }

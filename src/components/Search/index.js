@@ -1,1 +1,1 @@
-export { Search } from './Component'
+export { Search } from './Container'

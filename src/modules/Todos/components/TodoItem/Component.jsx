@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Checkbox, List } from 'antd'
+import { Checkbox, List, Popconfirm, Button } from 'antd'
+import { DeleteOutlined } from '@ant-design/icons'
 import './style.css'
 import { projectsPropTypes, todoPropTypes } from '../../../../propTypes'
 import { formatDate } from './sevices/formatDate'
@@ -64,6 +65,12 @@ export function TodoItemCmp (props) {
   //  НЕЛЬЗЯ В ПРОПСЫ ЗНАЧЕНИЯ ДОБАВЛЯТЬ!!
   }
 
+  const onConfirm = () => {
+    console.log(todo.id)
+    const { onDeleteTodo } = props
+    onDeleteTodo(todo.id)
+  }
+
   return (
     <List.Item className="todo-item">
       <div className="todo-item__main-info">
@@ -76,21 +83,34 @@ export function TodoItemCmp (props) {
           <p key={todo.description}>{todo.description}</p>
         </div>
 
-        <ModalWindow
-          onAddItem={onEditItem}
-          btnType="text"
-          styleClass="btn-edit"
-          title="Редактировать"
-          onChange={onHandleChange}
-          descriptionValue={todo.description}
-        >
-          <div>
-            <DateTimePricker addTime={onEditTime} addDate={onEditDate} defaultDate={todo.date} defaultTime={todo.time}/>
-            <SelectProject addProject={onEditProject} projectValue={todo.project}/>
-            <SelectPriority addPriority={onEditPriority} priorityValue={todo.priority}/>
-            {/*<div>Напоминание</div>*/}
-          </div>
-        </ModalWindow>
+        <div>
+          <ModalWindow
+            onAddItem={onEditItem}
+            btnType="text"
+            styleClass="btn-edit"
+            title="Редактировать"
+            onChange={onHandleChange}
+            descriptionValue={todo.description}
+          >
+            <div>
+              <DateTimePricker addTime={onEditTime} addDate={onEditDate} defaultDate={todo.date} defaultTime={todo.time}/>
+              <SelectProject addProject={onEditProject} projectValue={todo.project}/>
+              <SelectPriority addPriority={onEditPriority} priorityValue={todo.priority}/>
+              {/*<div>Напоминание</div>*/}
+            </div>
+          </ModalWindow>
+
+          <Popconfirm
+            title="Вы уверены?"
+            cancelText="Отменить"
+            okText="Принять"
+            onConfirm={onConfirm}
+          >
+            <Button type="text" className="todo-item__btn-delete">
+              <DeleteOutlined style={{fontSize: '1rem'}}/>
+            </Button>
+          </Popconfirm>
+        </div>
 
         {todo.status === DONE_TODO_STATUS
           ? <button onClick={onRestoreClick}>Restore</button>
@@ -103,7 +123,7 @@ export function TodoItemCmp (props) {
         <div className="todo-item__date-priority">
           {todo.date ?
             <p className="todo-item__date">
-              {`${formatDate(todo.date)}, ${todo.time}`}
+              {formatDate(todo.date)}{todo.time ? `, ${todo.time}`  : ''}
             </p>
             : ''
           }
@@ -128,4 +148,5 @@ TodoItemCmp.propTypes = {
   item: todoPropTypes,
   onTodoStatusChange: PropTypes.func,
   onEditTodo: PropTypes.func,
+  onDeleteTodo: PropTypes.func,
 }

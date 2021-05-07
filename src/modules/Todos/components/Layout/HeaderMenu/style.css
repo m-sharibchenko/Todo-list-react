@@ -8,15 +8,19 @@
     margin-right: 1rem;
 }
 
-.header__home-link, .header__user-prof-link {
-    color: #FFFFFF;
-    width: 2.4rem;
-    height: 2rem;
+.header__home-link {
+    width: 36px;
+    height: 33px;
+    position: relative;
+}
+
+.header__user-prof-link {
+    width: 35px;
+    height: 31px;
     position: relative;
 }
 
 .link {
-    width: 24px;
     position: absolute;
     top: 10%;
     left: 13%;

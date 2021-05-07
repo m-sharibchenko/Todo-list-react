@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Input, Modal } from 'antd'
+import { EditOutlined } from '@ant-design/icons'
 import './style.css'
 import PropTypes from 'prop-types'
 
@@ -10,8 +11,6 @@ export function ModalWindow (props) {
   const [visible, setVisible] = useState(false)
 
   const showModal = () => {
-    console.log(descriptionValue)
-    console.log(typeof inputValue)
     setVisible(true)
   }
 
@@ -40,7 +39,7 @@ export function ModalWindow (props) {
         onClick={showModal}
         className={`modal__btn-show ${styleClass}`}
       >
-        {btnText || (<img src="/icons/edit.png" alt="edit"/>)}
+        {btnText || (<EditOutlined style={{ fontSize: '1rem'}}/>)}
       </Button>
 
       <Modal
@@ -49,7 +48,7 @@ export function ModalWindow (props) {
         onOK={onAdd}
         onCancel={handleCancel}
         footer={[
-          <Button type="primary" key={title} onClick={onAdd} disabled={inputValue === undefined}>
+          <Button type="primary" key={title} onClick={onAdd} disabled={inputValue === ''}>
             Принять
           </Button>
         ]}

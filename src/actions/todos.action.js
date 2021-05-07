@@ -7,6 +7,7 @@ export const TODO_STATUS_CHANGE = 'TODO_STATUS_CHANGE'
 export const EDIT_TODO = 'EDIT_TODO'
 export const EDIT_PROJECT = 'EDIT_PROJECT'
 export const SET_USER_TODOS = 'SET_USER_TODOS'
+export const DELETE_TODO = 'DELETE_TODO'
 
 export function addTodoAction ({ description, date, time, project, priority }) {
   return {
@@ -64,6 +65,15 @@ export function editProject ({ id, projectName}) {
     payload: {
       id,
       projectName
+    }
+  }
+}
+
+export function deleteTodo (todoId) {
+  return {
+    type: DELETE_TODO,
+    payload: {
+      todoId,
     }
   }
 }

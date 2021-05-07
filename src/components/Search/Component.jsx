@@ -1,34 +1,41 @@
-import React, { useState } from 'react'
-import { Input } from 'antd'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
+import { AutoComplete, Input } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
 import './style.css'
+import { projectsPropTypes } from '../../propTypes'
 
-const SearchAntd = Input.Search
+export function SearchCmp (props) {
+  const history = useHistory()
 
-export function Search () {
-  const [value, setValue] = useState('')
+  const options = props.projectsArray.map(item => {
+    return {
+      value: item.projectName,
+      path: item.id
+    }
+  })
 
-  const onInputChange = (evt) => {
-    setValue(evt.target.value)
+  const filterOption = (inputValue, option) => {
+    return option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
   }
 
-  const onSearch = () => {
-    //some action with value
-    setValue('')
-  }
-
-  const onEnter = () => {
-    //some action with value
-    setValue('')
+  const onSelectOption = (inputValue, option) => {
+    history.push(option.path)
   }
 
   return (
-    <SearchAntd
+    <AutoComplete
+      options={options}
       className="header__input-search"
-      value={value}
       placeholder="Поиск проекта"
-      onChange={onInputChange}
-      onSearch={onSearch}
-      enterButton
-      onPressEnter={onEnter}/>
+      filterOption={filterOption}
+      onSelect={onSelectOption}
+    >
+      <Input suffix={<SearchOutlined/>}/>
+    </AutoComplete>
   )
+}
+
+SearchCmp.propTypes = {
+  projectsArray: projectsPropTypes
 }

@@ -1,4 +1,8 @@
-.sider__main-menu {
-    margin-bottom: 20px;
-    border-right: 0;
+.todo-sider__priority {
+    margin-bottom: 3rem;
+}
+
+.todo-sider__btn-add-project {
+    margin: 8px 0 8px 0;
+    padding: 0 16px 0 48px;
 }

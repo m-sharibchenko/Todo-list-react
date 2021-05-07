@@ -4,7 +4,7 @@ import {
   EDIT_TODO,
   EDIT_PROJECT,
   TODO_STATUS_CHANGE,
-  SET_USER_TODOS
+  SET_USER_TODOS, DELETE_TODO
 } from '../actions/todos.action'
 import { DEFAULT_PROJECT, FIRST_PROJECT } from '../modules/Todos/constants/projects'
 import { ACTIVE_TODO_STATUS, DONE_TODO_STATUS } from '../modules/Todos/constants/todoStatus'
@@ -105,6 +105,28 @@ export function todosReducer (state = initialState, action) {
       return {
         todos: [...state.todos],
         projects: newProjectsArr,
+      }
+    case DELETE_TODO:
+      const todoID = action.payload.todoId
+      const newProjectsArray = state.projects.map(item => {
+        if (item.todos.find(todo => todo === todoID)) {
+          const id = item.todos.find(todo => todo === todoID)
+          const newTodos = item.todos.filter(todo => todo !== id)
+
+          return {
+            ...item,
+            todos: newTodos
+          }
+        }
+
+        return item
+      })
+
+      const newTodosArr = state.todos.filter(item => item.id !== todoID)
+
+      return {
+        todos: newTodosArr,
+        projects: newProjectsArray,
       }
     default:
       return state

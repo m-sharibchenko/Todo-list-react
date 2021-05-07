@@ -21,8 +21,6 @@ button {
     font-weight: 700;
     font-size: 13px;
     text-align: center;
-    /*min-height: 40px;*/
-    /*min-width: 150px;*/
 }
 
 button:active {

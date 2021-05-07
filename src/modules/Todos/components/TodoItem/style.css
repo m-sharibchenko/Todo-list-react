@@ -15,6 +15,17 @@
     font-size: 1.3rem;
 }
 
+.todo-item__btn-delete {
+    height: 31px;
+    width: 31px;
+    padding: 0 0.4rem;
+}
+
+.todo-item__btn-delete:hover {
+    background-color: #bdbfc1;
+    cursor: pointer;
+}
+
 .todo-item__main-info,
 .todo-item__info {
     width: 100%;

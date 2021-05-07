@@ -1,5 +1,6 @@
 import React from 'react'
 import './style.css'
+import { UserOutlined, HomeOutlined } from '@ant-design/icons'
 import { user, app } from '../../../../../routes/rootRoutes'
 import { Link } from 'react-router-dom'
 import { Search } from '../../../../../components/Search'
@@ -12,7 +13,7 @@ export function HeaderMenu () {
       <div className="header__menu-wrap">
         <div className="header__home-link">
           <Link to={`${app.path}${todayRoute.path}`} className="link">
-            <img src='/icons/home.png' alt="home"/>
+            <HomeOutlined style={{fontSize: '1.5rem', color: '#FFFFFF'}}/>
           </Link>
         </div>
 
@@ -26,7 +27,7 @@ export function HeaderMenu () {
 
         <div className="header__user-prof-link">
           <Link to={user.path} className="link">
-            <img src='/icons/user.png' alt="user"/>
+            <UserOutlined style={{fontSize: '1.5rem', color: '#FFFFFF'}}/>
           </Link>
         </div>
       </div>
