@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom'
 import { pricing } from '../../../../routes/user.routes/pricingRoutes'
 import './style.css'
 import { EditUserInfo } from '../EditUserInfo'
-import { ACCOUNT_INFO_TITLES } from '../../constants/accountInfoTitles'
+import { ACCOUNT_INFO_TITLES } from '../../constants'
 import { userDataPropTypes } from '../../../../propTypes'
 import { Button } from 'antd'
+import { UploadFile } from '../UploadFile'
 
 export function UserAccountCmp (props) {
   const history = useHistory()
@@ -43,9 +44,9 @@ export function UserAccountCmp (props) {
         <p className="account-info__title">Личная информация</p>
 
         <ul>
-          <li>
-            <p>{ACCOUNT_INFO_TITLES.photo}</p>
-            <Button>change photo</Button>
+          <li className="account-info__edit-photo">
+            <p className="account-info__photo">{ACCOUNT_INFO_TITLES.photo}</p>
+            <UploadFile/>
           </li>
 
           <EditUserInfo title={ACCOUNT_INFO_TITLES.name} item={props.userData.userName}/>

@@ -1,5 +1,5 @@
 import { CHANGE_USER_INFO, USER_LOGIN } from '../actions/user.action'
-import { ACCOUNT_INFO_TITLES } from '../modules/User/constants/accountInfoTitles'
+import { ACCOUNT_INFO_TITLES } from '../modules/User/constants'
 
 const initialState = {
   isLogged: false,

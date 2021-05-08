@@ -18,7 +18,6 @@ export function SiderMenuCmp (props) {
   return (
     <Menu
       mode="inline"
-      defaultSelectedKeys={[todayRoute.path]}
       selectedKeys={[location.pathname.replace(url, '')]}
       className="todo-sider__menu"
     >

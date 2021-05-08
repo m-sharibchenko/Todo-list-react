@@ -10,7 +10,7 @@ export function UserSider () {
   return (
     <Menu
       mode="inline"
-      defaultOpenKeys="1"
+      selectedKeys={[location.pathname.replace(url, '')]}
       style={{ height: '100%' }}
       className="user__sider-menu"
     >

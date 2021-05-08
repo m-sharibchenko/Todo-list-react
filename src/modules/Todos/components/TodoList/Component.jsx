@@ -12,7 +12,6 @@ export function TodoListCmp (props) {
   const { filterProp, filterItem } = props
 
   return (
-    // switch (filterProp) , because if upcoming - date not ===, but <
     <List className="todo-list">
       {filterProp === 'status' &&
       props.todosArray.filter(item => item.status === DONE_TODO_STATUS)

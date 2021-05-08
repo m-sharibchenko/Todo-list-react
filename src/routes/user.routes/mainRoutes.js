@@ -2,7 +2,7 @@ import React from 'react'
 import { UserAccount } from '../../modules/User/components/UserAccount'
 import { Notification } from '../../modules/User/components/Notification'
 
-const profile = {
+export const profile = {
   path: '/profile',
   title: 'Профиль',
   isExact: false,

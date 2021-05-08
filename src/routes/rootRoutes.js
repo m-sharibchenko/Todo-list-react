@@ -26,7 +26,7 @@ export const loginPg = {
 }
 
 export const signupPg = {
-  path: '/registration',
+  path: '/signup',
   isExact: false,
   component: SignupPg,
 }

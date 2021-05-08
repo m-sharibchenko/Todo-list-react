@@ -24,7 +24,15 @@
 }
 
 .account-info__tariff-title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+}
+
+.account-info__edit-photo {
+    display: flex;
+}
+
+.account-info__photo {
+    min-width: 150px;
 }
 
 .account-info__btn-delete-acc {

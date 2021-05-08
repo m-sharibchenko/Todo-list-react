@@ -6,19 +6,23 @@ export const ACCOUNT_INFO_TITLES = {
 
 export const ACCOUNT_NOTIFICATION = [
   {
-    title: 'Текущие задачи',
-    checked: false,
+    title: 'Активные задачи',
+    checked: true,
+    action: true,
   },
   {
     title: 'Напоминания о просроченных задачах',
-    action: false,
+    checked: true,
+    action: true,
   },
   {
     title: 'Получать план на день',
-    action: false,
+    checked: true,
+    action: true,
   },
   {
-    title: 'Получить новости приложения',
-    action: false,
+    title: 'Получать новости приложения',
+    checked: true,
+    action: true,
   },
 ]
