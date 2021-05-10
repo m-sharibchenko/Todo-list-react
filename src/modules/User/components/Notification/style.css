@@ -1,27 +1,23 @@
-.notification-title {
+.notifications-title {
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 0.63rem;
 }
 
-.notification-switch-wrapper {
+.notifications-switch-wrapper {
     margin-bottom: 1rem;
 }
 
-.notification-switch,
+.notifications-switch,
 .reminders-switch {
     margin-right: 1rem;
 }
 
-.notification-checkboxes {
+.notifications-checkboxes {
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
     border-bottom: 1px solid #F0F2F5;
-}
-
-.notification-item:not(:last-child) {
-    margin: 0 0 0.63rem 0.5rem;
 }
 
 .reminders-switch-wrapper {
@@ -30,7 +26,7 @@
 }
 
 .reminders-switch__comment,
-.notification-switch__comment {
+.notifications-switch__comment {
     font-size: 0.7rem;
     color: #9f9e9e;
 }

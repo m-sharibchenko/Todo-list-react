@@ -8,8 +8,9 @@ export const EDIT_TODO = 'EDIT_TODO'
 export const EDIT_PROJECT = 'EDIT_PROJECT'
 export const SET_USER_TODOS = 'SET_USER_TODOS'
 export const DELETE_TODO = 'DELETE_TODO'
+export const SHOW_REMINDER_CHANGE = 'SHOW_REMINDER_CHANGE'
 
-export function addTodoAction ({ description, date, time, project, priority }) {
+export function addTodoAction ({ description, date, time, project, priority, remind }) {
   return {
     type: ADD_TODO,
     payload: {
@@ -20,6 +21,10 @@ export function addTodoAction ({ description, date, time, project, priority }) {
       time,
       project,
       priority,
+      reminder: {
+        status: remind,
+        wasShown: false,
+      }
     }
   }
 }
@@ -89,5 +94,15 @@ export function getUserTodos (userID) {
         ...userTodos
       }
     })
+  }
+}
+
+export function showReminderChange (id, bool) {
+  return {
+    type: SHOW_REMINDER_CHANGE,
+    payload: {
+      id,
+      bool,
+    }
   }
 }

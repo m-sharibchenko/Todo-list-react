@@ -5,7 +5,11 @@ todos: [
 		priority: null,
 		date: null,
 		time: null,
-		project:
+		project: null,
+		reminder: {
+			status: false,
+			wasShown: false,
+		}
 	}
 ]
 
@@ -16,3 +20,15 @@ projects: [
 	}
 ]
 
+
+user: {
+	isLogged: false,
+	id: '',
+	userName: '',
+	email: '',
+	reminders: true,
+	notifications: {
+		status: true,
+		// какие напоминания - имя: boolean
+	}
+}

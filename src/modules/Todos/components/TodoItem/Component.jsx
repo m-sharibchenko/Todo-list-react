@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Checkbox, List, Popconfirm, Button } from 'antd'
-import { DeleteOutlined } from '@ant-design/icons'
+import { DeleteOutlined, RollbackOutlined } from '@ant-design/icons'
 import './style.css'
 import { projectsPropTypes, todoPropTypes } from '../../../../propTypes'
 import { formatDate } from './sevices/formatDate'
@@ -10,21 +10,21 @@ import { ModalWindow } from '../../../../components/Modal'
 import { DateTimePricker } from '../../../../components/DateTimePicker'
 import { SelectProject } from '../SelectProject'
 import { SelectPriority } from '../SelectPriority'
-import { DONE_TODO_STATUS } from '../../constants/todoStatus'
+import { ACTIVE_TODO_STATUS, DONE_TODO_STATUS } from '../../constants/todoStatus'
+import { Reminder } from '../Reminder'
 
 export function TodoItemCmp (props) {
   const { item } = props
+  const {onTodoStatusChange} = props
 
-  const [todo, setValue] = useState(item)
+  const [todo, setTodo] = useState(item)
 
   const onStatusChange = () => {
-    const {onTodoStatusChange} = props
-
     onTodoStatusChange(todo)
   }
 
   const onHandleChange = (evt) => {
-    setValue(prevState => {
+    setTodo(prevState => {
       return {
         ...prevState,
         description: evt.target.value
@@ -33,14 +33,28 @@ export function TodoItemCmp (props) {
   }
 
   const onEditDate = (date) => {
-    setValue(prevState => {
-      return { ...prevState, date }
+    setTodo(prevState => {
+      return {
+        ...prevState,
+        date,
+        reminder: {
+          status: todo.status,
+          wasShown: false
+        }
+      }
     })
   }
 
   const onEditTime = (time) => {
-    setValue(prevState => {
-      return { ...prevState, time }
+    setTodo(prevState => {
+      return {
+        ...prevState,
+        time,
+        reminder: {
+          status: todo.status,
+          wasShown: false
+        }
+      }
     })
   }
 
@@ -50,25 +64,43 @@ export function TodoItemCmp (props) {
   }
 
   const onEditPriority = (priority) => {
-    setValue(prevState => {
+    setTodo(prevState => {
       return { ...prevState, priority }
     })
   }
 
   const onEditProject = (project) => {
-    setValue(prevState => {
+    setTodo(prevState => {
       return { ...prevState, project }
     })
   }
 
   const onRestoreClick = () => {
-  //  НЕЛЬЗЯ В ПРОПСЫ ЗНАЧЕНИЯ ДОБАВЛЯТЬ!!
+    setTodo(prevState => {
+      return {
+        ...prevState,
+        status: ACTIVE_TODO_STATUS,
+      }
+    })
+
+    onTodoStatusChange(todo)
   }
 
   const onConfirm = () => {
-    console.log(todo.id)
     const { onDeleteTodo } = props
     onDeleteTodo(todo.id)
+  }
+
+  const onSetReminder = (e) => {
+    setTodo(prevState => {
+      return {
+        ...prevState,
+        reminder: {
+          status: e.target.checked,
+          wasShown: false
+        }
+      }
+    })
   }
 
   return (
@@ -80,6 +112,7 @@ export function TodoItemCmp (props) {
             checked={todo.status === DONE_TODO_STATUS}
             className="todo-item__checkbox"
           />
+
           <p key={todo.description}>{todo.description}</p>
         </div>
 
@@ -93,10 +126,19 @@ export function TodoItemCmp (props) {
             descriptionValue={todo.description}
           >
             <div>
-              <DateTimePricker addTime={onEditTime} addDate={onEditDate} defaultDate={todo.date} defaultTime={todo.time}/>
+              <DateTimePricker
+                addTime={onEditTime}
+                addDate={onEditDate}
+                defaultDate={todo.date}
+                defaultTime={todo.time}
+              />
               <SelectProject addProject={onEditProject} projectValue={todo.project}/>
               <SelectPriority addPriority={onEditPriority} priorityValue={todo.priority}/>
-              {/*<div>Напоминание</div>*/}
+              <Checkbox onChange={onSetReminder}
+                        defaultChecked={todo.reminder.status}
+              >
+                Добавить напоминание
+              </Checkbox>
             </div>
           </ModalWindow>
 
@@ -110,12 +152,18 @@ export function TodoItemCmp (props) {
               <DeleteOutlined style={{fontSize: '1rem'}}/>
             </Button>
           </Popconfirm>
+
+          <Button
+            type="text"
+            onClick={onRestoreClick}
+            style={{display: todo.status === DONE_TODO_STATUS ? null : 'none'}}
+            className="todo-item__btn-restore"
+          >
+            <RollbackOutlined style={{fontSize: '1rem'}}/>
+          </Button>
         </div>
 
-        {todo.status === DONE_TODO_STATUS
-          ? <button onClick={onRestoreClick}>Restore</button>
-          : <></>
-        }
+        {props.reminders && todo.reminder.status ? <Reminder todo={todo}/> : ''}
       </div>
 
       <div className="todo-item__info">
@@ -144,6 +192,7 @@ export function TodoItemCmp (props) {
 }
 
 TodoItemCmp.propTypes = {
+  reminders: PropTypes.bool,
   projectsArray: projectsPropTypes,
   item: todoPropTypes,
   onTodoStatusChange: PropTypes.func,

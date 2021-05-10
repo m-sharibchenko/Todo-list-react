@@ -1,1 +1,1 @@
-export { Notification } from './Component'
+export { Notification } from './Container'

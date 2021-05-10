@@ -1,53 +1,57 @@
-import React, { useState } from 'react'
-import { Checkbox, Switch } from 'antd'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Switch } from 'antd'
 import './style.css'
 import { ACCOUNT_NOTIFICATION } from '../../constants'
+import { NotificationCheckbox } from '../NotificationCheckbox'
 
-export function Notification () {
-  const [notificationChecked, setNotificationChecked] = useState(true)
-  const [remindersChecked, setRemindersChecked] = useState(true)
-
-  const onNotificationChange = (checked) => {
-    checked ? setNotificationChecked(true) : setNotificationChecked(false)
+export function NotificationCmp (props) {
+  const onNotificationsChange = (checked) => {
+    const { notificationsChange } = props
+    checked ?
+      notificationsChange(true)
+      : notificationsChange(false)
   }
 
   const onRemindersChange = (checked) => {
-    checked ? setRemindersChecked(true) : setRemindersChecked(false)
+    const { remindersChange } = props
+    checked ?
+      remindersChange(true)
+      : remindersChange(false)
+
   }
 
   return (
     <>
-      <p className="notification-title">Уведомления</p>
-      <div className="notification-switch-wrapper">
+      <p className="notifications-title">Уведомления</p>
+      <div className="notifications-switch-wrapper">
         <div>
-          <span className="notification-switch">Включить уведомления</span>
-          <Switch defaultChecked={notificationChecked} onChange={onNotificationChange}/>
+          <span className="notifications-switch">Включить уведомления</span>
+          <Switch defaultChecked={props.notifications} onChange={onNotificationsChange}/>
         </div>
 
-        <span className="notification-switch__comment">
+        <span className="notifications-switch__comment">
           Вы будете получать уведомления на e-mail
         </span>
       </div>
 
-      <div className="notification-checkboxes">
+      <div className="notifications-checkboxes">
         {ACCOUNT_NOTIFICATION.map(({title, checked}) => {
           return (
-            <Checkbox
-              className="notification-item"
+            <NotificationCheckbox
               key={title}
-              disabled={!notificationChecked}
+              title={title}
               checked={checked}
-            >
-              {title}
-            </Checkbox>
-          )
+              notification={props.notifications}
+            />
+            )
         })}
       </div>
 
       <div className="reminders-switch-wrapper">
         <div>
           <span className="reminders-switch">Включить напоминания</span>
-          <Switch defaultChecked={remindersChecked} onChange={onRemindersChange}/>
+          <Switch defaultChecked={props.reminders} onChange={onRemindersChange}/>
         </div>
 
         <span className="reminders-switch__comment">
@@ -56,4 +60,11 @@ export function Notification () {
       </div>
     </>
   )
+}
+
+NotificationCmp.propTypes = {
+  reminders: PropTypes.bool,
+  notifications: PropTypes.bool,
+  notificationsChange: PropTypes.func,
+  remindersChange: PropTypes.func,
 }

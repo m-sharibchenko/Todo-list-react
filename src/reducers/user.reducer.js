@@ -1,4 +1,9 @@
-import { CHANGE_USER_INFO, USER_LOGIN } from '../actions/user.action'
+import {
+  CHANGE_NOTIFICATIONS_STATUS,
+  CHANGE_REMINDERS_STATUS,
+  CHANGE_USER_INFO,
+  USER_LOGIN
+} from '../actions/user.action'
 import { ACCOUNT_INFO_TITLES } from '../modules/User/constants'
 
 const initialState = {
@@ -6,6 +11,8 @@ const initialState = {
   id: '',
   userName: '',
   email: '',
+  reminders: true,
+  notifications: true,
 }
 
 export function userReducer (state = initialState, action) {
@@ -30,6 +37,16 @@ export function userReducer (state = initialState, action) {
           ...state,
           email: changes.value
         }
+      }
+    case CHANGE_NOTIFICATIONS_STATUS:
+      return {
+        ...state,
+        notifications: action.payload.notification
+      }
+    case CHANGE_REMINDERS_STATUS:
+      return {
+        ...state,
+        reminders: action.payload.reminders
       }
     default:
       return state

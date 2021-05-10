@@ -16,12 +16,18 @@
 }
 
 .todo-item__btn-delete {
+    margin-right: 0.4rem;
+}
+
+.todo-item__btn-delete,
+.todo-item__btn-restore {
     height: 31px;
     width: 31px;
     padding: 0 0.4rem;
 }
 
-.todo-item__btn-delete:hover {
+.todo-item__btn-delete:hover,
+.todo-item__btn-restore:hover {
     background-color: #bdbfc1;
     cursor: pointer;
 }
@@ -51,6 +57,7 @@
 .second-priority,
 .third-priority {
     min-width: 98px;
+    height: 22px;
     text-align: center;
     border-radius: 3px;
     margin-right: 2rem;

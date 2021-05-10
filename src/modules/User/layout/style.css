@@ -12,13 +12,15 @@
 }
 
 .user__sider {
+    position: fixed;
     max-width: 300px;
     height: 100vh;
     background-color: #F0F2F5;
 }
 
 .user__content {
-    margin: 0 50px 0 16px;
+    overflow: initial;
+    margin: 0 50px 0 316px;
     padding: 20px 84px 0;
     background-color: #FFFFFF;
 }

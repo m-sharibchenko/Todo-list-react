@@ -4,7 +4,7 @@ import {
   EDIT_TODO,
   EDIT_PROJECT,
   TODO_STATUS_CHANGE,
-  SET_USER_TODOS, DELETE_TODO
+  SET_USER_TODOS, DELETE_TODO, SHOW_REMINDER_CHANGE
 } from '../actions/todos.action'
 import { DEFAULT_PROJECT, FIRST_PROJECT } from '../modules/Todos/constants/projects'
 import { ACTIVE_TODO_STATUS, DONE_TODO_STATUS } from '../modules/Todos/constants/todoStatus'
@@ -58,12 +58,13 @@ export function todosReducer (state = initialState, action) {
         if (item.id === todo.id) {
           return {
             ...item,
-            status: ACTIVE_TODO_STATUS ? DONE_TODO_STATUS : ACTIVE_TODO_STATUS
+            status: todo.status === ACTIVE_TODO_STATUS ? DONE_TODO_STATUS : ACTIVE_TODO_STATUS
           }
         }
 
         return item
       })
+
       return {
         todos: newTodos,
         projects: [...state.projects]
@@ -127,6 +128,26 @@ export function todosReducer (state = initialState, action) {
       return {
         todos: newTodosArr,
         projects: newProjectsArray,
+      }
+    case SHOW_REMINDER_CHANGE:
+      const payload = action.payload
+      const todosArrNew = state.todos.map(item => {
+        if (item.id === payload.id) {
+          return {
+            ...item,
+            reminder: {
+              status: item.reminder.status,
+              wasShown: payload.bool
+            }
+          }
+        }
+
+        return item
+      })
+
+      return {
+        todos: todosArrNew,
+        projects: [...state.projects],
       }
     default:
       return state

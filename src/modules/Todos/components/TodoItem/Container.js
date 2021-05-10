@@ -5,7 +5,8 @@ import { getProjects } from '../../../../selectors'
 
 const mapStateToProps = (state) => {
   return {
-    projectsArray: getProjects(state)
+    projectsArray: getProjects(state),
+    reminders: state.user.reminders
   }
 }
 

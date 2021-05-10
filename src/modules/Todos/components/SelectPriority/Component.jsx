@@ -20,7 +20,7 @@ export function SelectPriorityCmp (props) {
   return (
     <Select
       allowClear
-      style={{ width: '100%' }}
+      style={{ width: '100%', marginBottom: '0.5rem'}}
       placeholder="Выберите приоритет"
       defaultValue={value}
       onChange={setPriority}

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 export function ModalWindow (props) {
   const { btnType, styleClass, btnText, title, onAddItem, descriptionValue } = props
 
-  const [inputValue, setInputValue] = useState(descriptionValue ? descriptionValue : '')
+  const [inputValue, setInputValue] = useState(descriptionValue ? descriptionValue : null)
   const [visible, setVisible] = useState(false)
 
   const showModal = () => {
@@ -48,7 +48,7 @@ export function ModalWindow (props) {
         onOK={onAdd}
         onCancel={handleCancel}
         footer={[
-          <Button type="primary" key={title} onClick={onAdd} disabled={inputValue === ''}>
+          <Button type="primary" key={title} onClick={onAdd} disabled={!inputValue}>
             Принять
           </Button>
         ]}

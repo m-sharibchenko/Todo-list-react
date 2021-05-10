@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Checkbox } from 'antd'
 import { ModalWindow } from '../../../../components/Modal'
 import { DateTimePricker } from '../../../../components/DateTimePicker'
 import { SelectProject } from '../SelectProject'
@@ -9,7 +10,10 @@ import { THIRD_PRIORITY } from '../../constants/todoPriority'
 import { projectsPropTypes } from '../../../../propTypes'
 
 export function AddTaskCmp (props) {
-  const [todo, setValue] = useState({ project: props.projectsArray.find(item => item.projectName === DEFAULT_PROJECT).id, priority: THIRD_PRIORITY })
+  const [todo, setValue] = useState({
+    project: props.projectsArray.find(item => item.projectName === DEFAULT_PROJECT).id,
+    priority: THIRD_PRIORITY
+  })
 
   const onHandleChange = (evt) => {
     setValue(prevState => {
@@ -49,6 +53,15 @@ export function AddTaskCmp (props) {
     })
   }
 
+  const onSetReminder = (e) => {
+    setValue(prevState => {
+      return {
+        ...prevState,
+        remind: e.target.checked
+      }
+    })
+  }
+
   return (
     <ModalWindow
       onAddItem={onAdd}
@@ -56,12 +69,12 @@ export function AddTaskCmp (props) {
       btnText="+ Новая задача"
       title="Добавление задачи"
       onChange={onHandleChange}>
-        <div>
-          <DateTimePricker addTime={onAddTime} addDate={onAddDate}/>
-          <SelectProject addProject={onAddProject}/>
-          <SelectPriority addPriority={onAddPriority}/>
-          {/*<div>Напоминание</div>*/}
-        </div>
+      <div>
+        <DateTimePricker addTime={onAddTime} addDate={onAddDate}/>
+        <SelectProject addProject={onAddProject}/>
+        <SelectPriority addPriority={onAddPriority}/>
+        <Checkbox onChange={onSetReminder}>Добавить напоминание</Checkbox>
+      </div>
     </ModalWindow>
   )
 }
