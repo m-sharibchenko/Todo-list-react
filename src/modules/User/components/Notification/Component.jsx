@@ -36,12 +36,11 @@ export function NotificationCmp (props) {
       </div>
 
       <div className="notifications-checkboxes">
-        {ACCOUNT_NOTIFICATION.map(({title, checked}) => {
+        {ACCOUNT_NOTIFICATION.map(({title}) => {
           return (
             <NotificationCheckbox
               key={title}
               title={title}
-              checked={checked}
               notification={props.notifications}
             />
             )

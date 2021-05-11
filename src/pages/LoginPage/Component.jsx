@@ -32,14 +32,11 @@ export function LoginPgCmp (props) {
 
       if (data.find(({ email }) => email === value)) {
         const user = data.find(({ email }) => email === value)
-
         const userID = user.id
 
         setShowError(false)
-
         isUserExist(true, user)
         getUserTodos(userID)
-
       } else {
         setShowError(true)
         isUserExist(false)

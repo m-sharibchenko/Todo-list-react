@@ -6,7 +6,7 @@ import {
 } from '../actions/user.action'
 import { ACCOUNT_INFO_TITLES } from '../modules/User/constants'
 
-const initialState = {
+const initialState = JSON.parse(localStorage.getItem("user")) || {
   isLogged: false,
   id: '',
   userName: '',
@@ -19,6 +19,15 @@ export function userReducer (state = initialState, action) {
   switch (action.type) {
     case USER_LOGIN:
       const data = action.payload
+
+      localStorage.setItem("user", JSON.stringify({
+        ...state,
+        isLogged: data.isLogged,
+        id: data.id,
+        userName: data.username,
+        email: data.email,
+      }));
+
       return {
         ...state,
         isLogged: data.isLogged,

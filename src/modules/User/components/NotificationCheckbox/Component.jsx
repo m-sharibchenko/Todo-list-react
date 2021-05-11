@@ -4,14 +4,13 @@ import './style.css'
 import { Checkbox } from 'antd'
 
 export function NotificationCheckbox (props) {
-  const {title, checked, notification} = props
+  const {title, notification} = props
 
   return (
     <Checkbox
       className="notification-item"
       key={title}
       disabled={!notification}
-      checked={checked}
     >
       {title}
     </Checkbox>

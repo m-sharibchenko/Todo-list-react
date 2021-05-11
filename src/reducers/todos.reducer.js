@@ -9,7 +9,7 @@ import {
 import { DEFAULT_PROJECT, FIRST_PROJECT } from '../modules/Todos/constants/projects'
 import { ACTIVE_TODO_STATUS, DONE_TODO_STATUS } from '../modules/Todos/constants/todoStatus'
 
-const initialState = {
+const initialState = JSON.parse(localStorage.getItem("tasks")) || {
   todos: [],
   projects: [
     {

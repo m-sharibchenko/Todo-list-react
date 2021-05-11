@@ -14,3 +14,9 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
+
+window.onbeforeunload = () => {
+  localStorage.setItem("tasks", JSON.stringify(store.getState().todos))
+  localStorage.setItem("user", JSON.stringify(store.getState().user))
+}
+// localStorage.clear()
