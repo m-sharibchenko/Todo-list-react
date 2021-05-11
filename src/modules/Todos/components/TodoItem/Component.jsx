@@ -38,7 +38,7 @@ export function TodoItemCmp (props) {
         ...prevState,
         date,
         reminder: {
-          status: todo.status,
+          status: todo.reminder.status,
           wasShown: false
         }
       }
@@ -51,7 +51,7 @@ export function TodoItemCmp (props) {
         ...prevState,
         time,
         reminder: {
-          status: todo.status,
+          status: todo.reminder.status,
           wasShown: false
         }
       }
@@ -136,6 +136,7 @@ export function TodoItemCmp (props) {
               <SelectPriority addPriority={onEditPriority} priorityValue={todo.priority}/>
               <Checkbox onChange={onSetReminder}
                         defaultChecked={todo.reminder.status}
+                        disabled={!props.reminders}
               >
                 Добавить напоминание
               </Checkbox>

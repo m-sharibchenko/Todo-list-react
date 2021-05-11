@@ -73,13 +73,18 @@ export function AddTaskCmp (props) {
         <DateTimePricker addTime={onAddTime} addDate={onAddDate}/>
         <SelectProject addProject={onAddProject}/>
         <SelectPriority addPriority={onAddPriority}/>
-        <Checkbox onChange={onSetReminder}>Добавить напоминание</Checkbox>
+        <Checkbox onChange={onSetReminder}
+                  disabled={!props.reminders}
+        >
+          Добавить напоминание
+        </Checkbox>
       </div>
     </ModalWindow>
   )
 }
 
 AddTaskCmp.propTypes = {
+  reminders: PropTypes.bool,
   onAddTodo: PropTypes.func,
   projectsArray: projectsPropTypes,
 }

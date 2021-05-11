@@ -50,7 +50,7 @@ export function todoStatusChange ({id, status}) {
   }
 }
 
-export function editTodo ({ id, description, date, time, project, priority }) {
+export function editTodo ({ id, description, date, time, project, priority, reminder }) {
   return {
     type: EDIT_TODO,
     payload: {
@@ -60,6 +60,10 @@ export function editTodo ({ id, description, date, time, project, priority }) {
       time,
       project,
       priority,
+      reminder: {
+        status: reminder.status,
+        wasShown: reminder.wasShown,
+      }
     }
   }
 }

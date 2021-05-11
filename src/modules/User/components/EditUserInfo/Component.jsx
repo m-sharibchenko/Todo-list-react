@@ -21,7 +21,6 @@ export function EditUserInfoCmp (props) {
   const onSaveClick = () => {
     const { saveChanges } = props
 
-    console.log(value)
     saveChanges(value, title)
 
     setIsEditHidden(false)

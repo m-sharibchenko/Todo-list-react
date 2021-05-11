@@ -80,6 +80,7 @@ export function todosReducer (state = initialState, action) {
             time: newItem.time,
             project: newItem.project,
             priority: newItem.priority,
+            reminder: newItem.reminder
           }
         }
 

@@ -20,6 +20,7 @@ export function userReducer (state = initialState, action) {
     case USER_LOGIN:
       const data = action.payload
       return {
+        ...state,
         isLogged: data.isLogged,
         id: data.id,
         userName: data.username,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Button, notification } from 'antd'
 import 'antd/dist/antd.css'
@@ -7,7 +7,7 @@ import { TODAY } from '../../../../constants'
 
 export function ReminderCmp (props) {
   const { todo, onShowReminderChange } = props
-  const inputRef = React.useRef(null)
+  const btnRef = useRef(null)
 
   const [ date ] = useState(TODAY)
   const [ time, setTime ] = useState(new Date().toLocaleTimeString().substring(0, 5))
@@ -22,11 +22,10 @@ export function ReminderCmp (props) {
 
   useEffect(() => {
     if (todo.reminder.wasShown === false && todo.time === time && todo.date === date) {
-      inputRef.current.click()
+      btnRef.current.click()
       onShowReminderChange(todo.id, true)
     }
-
-  }, [time])
+  }, [])
 
   const openNotification = () => {
     notification.open({
@@ -38,7 +37,7 @@ export function ReminderCmp (props) {
   return (
     <>
     <Button
-      ref={inputRef}
+      ref={btnRef}
       onClick={openNotification}
       style={{display: 'none'}}
     >
