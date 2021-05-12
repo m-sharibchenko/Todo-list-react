@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 export function ModalWindow (props) {
   const { btnType, styleClass, btnText, title, onAddItem, descriptionValue } = props
 
-  const [inputValue, setInputValue] = useState(descriptionValue ? descriptionValue : null)
+  const [inputValue, setInputValue] = useState(descriptionValue ? descriptionValue : '')
   const [visible, setVisible] = useState(false)
 
   const showModal = () => {
@@ -29,7 +29,7 @@ export function ModalWindow (props) {
     onAddItem(inputValue)
 
     setVisible(false)
-    setInputValue('')
+    descriptionValue ? setInputValue(descriptionValue) : setInputValue('')
   }
 
   return (
