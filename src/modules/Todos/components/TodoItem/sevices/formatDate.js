@@ -5,40 +5,40 @@ export function formatDate (str) {
   let textMonth
   switch (month) {
     case '01':
-      textMonth = 'jan'
+      textMonth = 'янв'
       break;
     case '02':
-      textMonth = 'feb'
+      textMonth = 'фев'
       break;
     case '03':
-      textMonth = 'mar'
+      textMonth = 'март'
       break;
     case '04':
-      textMonth = 'apr'
+      textMonth = 'апр'
       break;
     case '05':
-      textMonth = 'may'
+      textMonth = 'май'
       break;
     case '06':
-      textMonth = 'june'
+      textMonth = 'июнь'
       break;
     case '07':
-      textMonth = 'july'
+      textMonth = 'июль'
       break;
     case '08':
-      textMonth = 'aug'
+      textMonth = 'авг'
       break;
     case '09':
-      textMonth = 'sept'
+      textMonth = 'сен'
       break;
     case '10':
-      textMonth = 'oct'
+      textMonth = 'окт'
       break;
     case '11':
-      textMonth = 'nov'
+      textMonth = 'нояб'
       break;
     case '12':
-      textMonth = 'dec'
+      textMonth = 'дек'
       break;
   }
 

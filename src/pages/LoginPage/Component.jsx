@@ -69,7 +69,7 @@ export function LoginPgCmp (props) {
 
       <div className="login-page__signup">
         <span className="login-page__signup-text">Нет аккаунта?</span>
-        <Link to={signupPg.path}>Зарегестрироваться</Link>
+        <Link to={signupPg.path}>Зарегистрироваться</Link>
       </div>
     </div>
   )
